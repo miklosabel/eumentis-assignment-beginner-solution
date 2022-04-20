@@ -5,13 +5,22 @@ import { User } from './interface';
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios('https://jsonplaceholder.typicode.com/users');
-      setUsers(result.data);
+      try {
+        const result = await axios('https://jsonplaceholder.typicode.com/users');
+        setUsers(result.data);
+      } catch {
+        setHasError(true);
+      }
     }
+    setHasError(false);
+    setIsLoading(true);
     fetchData();
+    setIsLoading(false);
   }, [])
 
 
@@ -19,7 +28,12 @@ function App() {
 
   return (
     <div className="App">
-      {users.map(user => <div>{JSON.stringify(user)}</div>)}
+      {hasError && <p>something went wrong</p>}
+      {isLoading ? (
+        <div><p>loading...</p></div>
+      ) : (
+        users.map(user => <div key={user.id}>{JSON.stringify(user)}</div>)
+      )}
     </div>
   );
 }
