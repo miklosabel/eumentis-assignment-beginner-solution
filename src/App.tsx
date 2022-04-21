@@ -1,17 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { User } from './interface';
+import { User } from './components/user';
+import { IUser } from './interface';
 
 function App() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<IUser[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await axios('https://jsonplaceholder.typicode.com/users');
+        const result = await axios.get('https://jsonplaceholder.typicode.com/users');
         setUsers(result.data);
       } catch {
         setHasError(true);
@@ -32,7 +33,10 @@ function App() {
       {isLoading ? (
         <div><p>loading...</p></div>
       ) : (
-        users.map(user => <div key={user.id}>{JSON.stringify(user)}</div>)
+        users.map((user: IUser) => <div>
+          <User userData={user} />
+        </div>
+        )
       )}
     </div>
   );
