@@ -1,5 +1,5 @@
 import React from 'react';
-import { IUser } from '../interface';
+import { IUser } from '../../interface';
 import { Avatar } from './components/avatar';
 import './user.scss';
 
