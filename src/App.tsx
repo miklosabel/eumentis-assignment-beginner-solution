@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 import { User } from './components/user';
 import { IUser } from './interface';
 
@@ -28,17 +28,17 @@ function App() {
 
 
   return (
-    <div className="App">
+    <>
       {hasError && <p>something went wrong</p>}
       {isLoading ? (
         <div><p>loading...</p></div>
       ) : (
-        users.map((user: IUser) => <div>
-          <User userData={user} />
+        <div className='container'>
+          {users.map((user: IUser) => <User userData={user} />)}
         </div>
-        )
-      )}
-    </div>
+      )
+      }
+    </>
   );
 }
 

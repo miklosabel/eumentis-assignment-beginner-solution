@@ -1,0 +1,42 @@
+.user-card {
+  background-color: #fff;
+  margin: 20px 0px;
+  padding: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgb(0, 0, 0, 0.12),
+    0 1px 5px 0 rgb(0, 0, 0, 0.2);
+
+  .row {
+    display: flex;
+		margin-left: -15px;
+		margin-right: -15px;
+
+    .col-avatar {
+      padding: 0 15px;
+			width: auto;
+			max-width: 100%;
+    }
+
+    .col-data {
+      line-height: 1.5;
+      padding: 0 15px;
+			flex-grow: 1;
+			flex-basis: 0;
+			max-width: 100%;
+
+      .title {
+				margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 32px;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+          Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+          Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        font-weight: 500;
+				line-height: 1.2;
+      }
+
+      .user-data-line {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
