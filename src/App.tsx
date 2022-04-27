@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.scss';
-import { User } from './components/user';
+import { Spinner } from './components/spinner/spinner';
+import { User } from './components/user-card/user';
 import { IUser } from './interface';
 
 function App() {
@@ -24,19 +25,15 @@ function App() {
     setIsLoading(false);
   }, [])
 
-
-
-
   return (
     <>
       {hasError && <p>something went wrong</p>}
-      {isLoading ? (
-        <div><p>loading...</p></div>
-      ) : (
+      {isLoading ?
+        <Spinner />
+        :
         <div className='container'>
           {users.map((user: IUser) => <User userData={user} />)}
         </div>
-      )
       }
     </>
   );
